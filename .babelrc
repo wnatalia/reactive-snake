@@ -1,0 +1,27 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "useBuiltIns": "usage",
+        "corejs": 3
+      }
+    ],
+    "@babel/preset-react"
+  ],
+
+  "plugins": [
+    [
+      "react-css-modules",
+      {
+        "generateScopedName": "[name]__[local]--[hash:base64:5]",
+        "webpackHotModuleReloading": true,
+        "filetypes": {
+          ".scss": {
+            "syntax": "postcss-scss"
+          }
+        }
+      }
+    ]
+  ]
+}
