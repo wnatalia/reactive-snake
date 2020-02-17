@@ -8,8 +8,17 @@ html {
 
 body {
   font: 300 1.6rem/1.2 $f-basic;
+  letter-spacing: 0.075em;
 }
 
 h1, h2, h3 {
   font-weight: 600;
+}
+
+
+:global .wrapper {
+  max-width: 1200px;
+  padding: 0 20px;
+  height: 100%;
+  margin: 0 auto;
 }

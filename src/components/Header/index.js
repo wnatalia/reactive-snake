@@ -3,7 +3,9 @@ import './styles.scss';
 
 const Header = () => (
   <header styleName="header">
-    <h1 styleName="header__title">React Snake</h1>
+    <div className="wrapper" styleName="inner">
+      <h1 styleName="title">React Snake</h1>
+    </div>
   </header>
 );
 

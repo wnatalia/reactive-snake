@@ -1,5 +1,24 @@
 $footer__background: $light-violet;
+$footer__color: $white;
 
 .footer {
   background: $footer__background;
+  height: 50px;
+
+  .inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .text {
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    font-weight: 400;
+    font-size: 1.6rem;
+    color: $footer__color;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }

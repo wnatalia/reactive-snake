@@ -53,7 +53,9 @@ module.exports = {
               sourceMap: true
             }
           },
-          "sass-loader",
+          {
+            loader: "sass-loader",
+          },
           {
             loader: "sass-resources-loader",
             options: {
@@ -77,6 +79,7 @@ module.exports = {
       "family": "Source Sans Pro",
       "variants": [
         "300",
+        "400",
         "600",
       ]
     })

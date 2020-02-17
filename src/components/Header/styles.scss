@@ -2,10 +2,15 @@ $header__title__color: $violet;
 
 .header {
   height: 80px;
-  display: flex;
-  align-items: center;
-}
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 
-.header__title {
-  color: $header__title__color;
+  .inner {
+    display: flex;
+    height: 100%;
+    align-items: center;
+  }
+
+  .title {
+    margin: 0;
+  }
 }

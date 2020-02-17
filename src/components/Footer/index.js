@@ -1,10 +1,12 @@
 import React from 'react';
 import './styles.scss';
 
-const Header = () => (
+const Footer = () => (
   <footer styleName="footer">
-    <p>Created by NW</p>
+    <div className="wrapper" styleName="inner">
+      <p styleName="text">Created by NW</p>
+    </div>
   </footer>
 );
 
-export default Header;
+export default Footer;
