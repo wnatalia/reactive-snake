@@ -1,0 +1,11 @@
+$header__title__color: $violet;
+
+.header {
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.header__title {
+  color: $header__title__color;
+}

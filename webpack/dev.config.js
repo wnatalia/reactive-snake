@@ -1,36 +1,38 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const {CleanWebpackPlugin} = require("clean-webpack-plugin");
+const GoogleFontsPlugin = require('google-fonts-plugin');
+
 
 module.exports = {
-  entry: path.resolve(__dirname, '..', 'src', 'index.js'),
-  devtool: 'inline-source-map',
+  entry: path.resolve(__dirname, "..", "src", "index.js"),
+  devtool: "inline-source-map",
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
+    contentBase: path.join(__dirname, "dist"),
     historyApiFallback: true,
     port: 3001,
     open: true
   },
-  mode: 'development',
+  mode: "development",
   module: {
     rules: [
       {
         test: /\.js$/,
-        enforce: 'pre',
-        include: path.resolve(__dirname, '..', 'src'),
+        enforce: "pre",
+        include: path.resolve(__dirname, "..", "src"),
         exclude: /node_modules/,
-        use: ['babel-loader', 'eslint-loader']
+        use: ["babel-loader", "eslint-loader"]
       },
       {
         test: /\.css$/,
-        include: path.resolve(__dirname, '..', 'src'),
+        include: path.resolve(__dirname, "..", "src"),
         use: [
-          'style-loader',
+          "style-loader",
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
               modules: {
-                localIdentName: '[name]__[local]--[hash:base64:5]'
+                localIdentName: "[local]--[hash:base64:5]"
               },
               sourceMap: true
             }
@@ -39,19 +41,28 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        include: path.resolve(__dirname, '..', 'src'),
+        include: path.resolve(__dirname, "..", "src"),
         use: [
-          'style-loader',
+          "style-loader",
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
               modules: {
-                localIdentName: '[name]__[local]--[hash:base64:5]'
+                localIdentName: "[local]--[hash:base64:5]"
               },
               sourceMap: true
             }
           },
-          'sass-loader'
+          "sass-loader",
+          {
+            loader: "sass-resources-loader",
+            options: {
+              resources: [
+                path.resolve(__dirname, "..", "src/styles/variables/_colors.scss"),
+                path.resolve(__dirname, "..", "src/styles/variables/_typography.scss")
+              ]
+            },
+          },
         ]
       }
     ]
@@ -60,15 +71,22 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       inject: true,
-      template: path.resolve(__dirname, '..', 'public', 'index.html')
+      template: path.resolve(__dirname, "..", "public", "index.html")
+    }),
+    new GoogleFontsPlugin({
+      "family": "Source Sans Pro",
+      "variants": [
+        "300",
+        "600",
+      ]
     })
   ],
   resolve: {
-    extensions: ['*', '.js', '.jsx']
+    extensions: ["*", ".js", ".jsx"]
   },
   output: {
-    filename: 'bundle.js',
-    path: path.join(__dirname, '..', 'dist'),
-    publicPath: '/'
+    filename: "bundle.js",
+    path: path.join(__dirname, "..", "dist"),
+    publicPath: "/"
   }
 };
