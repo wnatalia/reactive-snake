@@ -1,9 +1,9 @@
-import types from './types';
+import types from 'types/game';
 
 export default (state = {}, action) => {
   switch (action.type) {
-    case types.SAVE:
-      return { ...state, board: action.board };
+    case types.START:
+      return { ...state, isInitialized: true };
     case types.PAUSE:
       return state;
     default:

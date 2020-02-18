@@ -21,7 +21,16 @@ module.exports = {
         enforce: "pre",
         include: path.resolve(__dirname, "..", "src"),
         exclude: /node_modules/,
-        use: ["babel-loader", "eslint-loader"]
+        use: ["babel-loader", "eslint-loader"],
+        resolve: {
+          alias: {
+            "actions":  path.resolve(__dirname, "..", "src", "redux", "actions"),
+            'components': path.resolve(__dirname, "..", "src", "components"),
+            'containers': path.resolve(__dirname, "..", "src", "containers"),
+            "reducers":  path.resolve(__dirname, "..", "src", "redux", "reducers"),
+            'types': path.resolve(__dirname, "..", "src", "redux", "types"),
+          }
+        }
       },
       {
         test: /\.css$/,

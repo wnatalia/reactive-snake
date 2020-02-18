@@ -1,5 +1,10 @@
 const initialState = {
-  game: {}
+  board: {
+    dimensions: null
+  },
+  game: {
+    isInitialized: false
+  }
 };
 
 export default initialState;
