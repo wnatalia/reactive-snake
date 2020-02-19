@@ -4,6 +4,9 @@ const initialState = {
   },
   game: {
     isInitialized: false
+  },
+  snake: {
+    position: null
   }
 };
 

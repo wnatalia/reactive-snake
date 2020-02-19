@@ -1,0 +1,13 @@
+.board-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  position: relative;
+  .cell {
+    width: 25px;
+    height: 25px;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    border: 1px solid;
+  }
+}

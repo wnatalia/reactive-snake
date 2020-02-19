@@ -25,10 +25,11 @@ module.exports = {
         resolve: {
           alias: {
             "actions":  path.resolve(__dirname, "..", "src", "redux", "actions"),
-            'components': path.resolve(__dirname, "..", "src", "components"),
-            'containers': path.resolve(__dirname, "..", "src", "containers"),
+            "components": path.resolve(__dirname, "..", "src", "components"),
+            "containers": path.resolve(__dirname, "..", "src", "containers"),
             "reducers":  path.resolve(__dirname, "..", "src", "redux", "reducers"),
-            'types': path.resolve(__dirname, "..", "src", "redux", "types"),
+            "saga": path.resolve(__dirname, "..", "src", "redux", "saga"),
+            "types": path.resolve(__dirname, "..", "src", "redux", "types"),
           }
         }
       },

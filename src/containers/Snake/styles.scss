@@ -1,0 +1,10 @@
+$snake__background: $violet;
+
+.snake {
+  background: $snake__background;
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
