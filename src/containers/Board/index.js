@@ -4,6 +4,7 @@ import { Form } from './containers/Form';
 import './styles.scss';
 import Snake from '../Snake';
 import types from 'types/snake';
+import directions from 'constants/directions';
 
 const Board = () => {
   const { dimensions, snakeDirection } = useSelector(
@@ -23,28 +24,29 @@ const Board = () => {
 
   const handleKeyDown = event => {
     const movesVertically =
-      snakeDirection === 'TO_TOP' || snakeDirection === 'TO_BOTTOM';
+      snakeDirection === directions.TO_TOP ||
+      snakeDirection === directions.TO_BOTTOM;
 
     let newDirection;
     switch (event.keyCode) {
       case 37:
         if (movesVertically) {
-          newDirection = 'TO_LEFT';
+          newDirection = directions.TO_LEFT;
         }
         break;
       case 38:
         if (!movesVertically) {
-          newDirection = 'TO_TOP';
+          newDirection = directions.TO_TOP;
         }
         break;
       case 39:
         if (movesVertically) {
-          newDirection = 'TO_RIGHT';
+          newDirection = directions.TO_RIGHT;
         }
         break;
       case 40:
         if (!movesVertically) {
-          newDirection = 'TO_BOTTOM';
+          newDirection = directions.TO_BOTTOM;
         }
         break;
     }

@@ -1,3 +1,5 @@
+import directions from 'constants/directions';
+
 const initialState = {
   board: {
     dimensions: null
@@ -6,7 +8,7 @@ const initialState = {
     isInitialized: false
   },
   snake: {
-    direction: 'TO_RIGHT',
+    direction: directions.TO_RIGHT,
     position: null
   }
 };

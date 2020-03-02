@@ -1,8 +1,8 @@
 import { all } from 'redux-saga/effects';
-import boardSaga from 'saga/board';
+import snakeSaga from 'saga/snake';
 
 function* saga() {
-  yield all([boardSaga()]);
+  yield all([snakeSaga()]);
 }
 
 export default saga;
