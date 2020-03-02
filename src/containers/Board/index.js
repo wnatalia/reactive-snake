@@ -1,11 +1,57 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { Form } from './containers/Form';
 import './styles.scss';
 import Snake from '../Snake';
+import types from 'types/snake';
 
 const Board = () => {
-  const dimensions = useSelector(state => state.board.dimensions);
+  const { dimensions, snakeDirection } = useSelector(
+    state => ({
+      dimensions: state.board.dimensions,
+      snakeDirection: state.snake.direction
+    }),
+    shallowEqual
+  );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [snakeDirection]);
+
+  const handleKeyDown = event => {
+    const movesVertically =
+      snakeDirection === 'TO_TOP' || snakeDirection === 'TO_BOTTOM';
+
+    let newDirection;
+    switch (event.keyCode) {
+      case 37:
+        if (movesVertically) {
+          newDirection = 'TO_LEFT';
+        }
+        break;
+      case 38:
+        if (!movesVertically) {
+          newDirection = 'TO_TOP';
+        }
+        break;
+      case 39:
+        if (movesVertically) {
+          newDirection = 'TO_RIGHT';
+        }
+        break;
+      case 40:
+        if (!movesVertically) {
+          newDirection = 'TO_BOTTOM';
+        }
+        break;
+    }
+    if (newDirection) {
+      dispatch({ type: types.SET_SNAKE_DIRECTION, direction: newDirection });
+    }
+  };
 
   if (dimensions) {
     let grid = [];

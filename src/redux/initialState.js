@@ -6,6 +6,7 @@ const initialState = {
     isInitialized: false
   },
   snake: {
+    direction: 'TO_RIGHT',
     position: null
   }
 };
