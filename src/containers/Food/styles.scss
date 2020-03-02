@@ -1,0 +1,10 @@
+$food__background: $yellow;
+
+.food {
+  background: $food__background;
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}

@@ -1,0 +1,4 @@
+export default {
+  SET_AS_EATEN: 'SET_AS_EATEN',
+  SET_FOOD_POSITION: 'SET_FOOD_POSITION'
+};

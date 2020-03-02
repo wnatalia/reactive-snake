@@ -1,10 +1,11 @@
-import { delay, put, select, takeEvery, takeLatest } from 'redux-saga/effects';
+import { delay, put, select, takeLatest } from 'redux-saga/effects';
 import directions from 'constants/directions';
-import boardTypes from 'types/board';
+import foodTypes from 'types/food';
 import snakeTypes from 'types/snake';
 
 const getDirection = state => state.snake.direction;
 const getPosition = state => state.snake.position;
+const getFoodPosition = state => state.food.position;
 
 const getNewPosition = (direction, position) => {
   let newX;
@@ -41,8 +42,19 @@ const getNewPosition = (direction, position) => {
 function* handlePositionChange() {
   const position = yield select(getPosition);
   const direction = yield select(getDirection);
+  const foodPosition = yield select(getFoodPosition);
   const newPosition = getNewPosition(direction, position);
-  
+
+  if (
+    foodPosition &&
+    position.x === foodPosition.x &&
+    position.y === foodPosition.y
+  ) {
+    yield put({
+      type: foodTypes.SET_AS_EATEN
+    });
+  }
+
   // Wait and move again
   yield delay(500);
   yield put({
@@ -62,14 +74,7 @@ function* handleDirectionChange() {
   });
 }
 
-function* handleSaveDimensions(action) {
-  const x = Math.ceil(action.dimensions.x / 2) - 1;
-  const y = Math.ceil(action.dimensions.y / 2) - 1;
-  yield put({ type: snakeTypes.SET_SNAKE_POSITION, position: { x, y } });
-}
-
-export default function* boardSaga() {
-  yield takeEvery(boardTypes.SAVE_DIMENSIONS, handleSaveDimensions);
+export default function* snakeSaga() {
   yield takeLatest(snakeTypes.SET_SNAKE_POSITION, handlePositionChange);
   yield takeLatest(snakeTypes.SET_SNAKE_DIRECTION, handleDirectionChange);
 }

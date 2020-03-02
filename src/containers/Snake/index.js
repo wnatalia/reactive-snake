@@ -5,7 +5,6 @@ import './styles.scss';
 const Snake = () => {
   const snakePosition = useSelector(state => state.snake.position);
 
-  console.log(snakePosition);
   if (snakePosition) {
     return (
       <div

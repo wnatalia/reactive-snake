@@ -2,9 +2,10 @@ import React, { useEffect } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { Form } from './containers/Form';
 import './styles.scss';
-import Snake from '../Snake';
 import types from 'types/snake';
 import directions from 'constants/directions';
+import Food from '../Food';
+import Snake from '../Snake';
 
 const Board = () => {
   const { dimensions, snakeDirection } = useSelector(
@@ -72,6 +73,7 @@ const Board = () => {
         style={{ width: dimensions.x * 25, height: dimensions.y * 25 }}
       >
         {grid}
+        <Food />
         <Snake />
       </div>
     );

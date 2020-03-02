@@ -4,6 +4,9 @@ const initialState = {
   board: {
     dimensions: null
   },
+  food: {
+    position: null
+  },
   game: {
     isInitialized: false
   },
