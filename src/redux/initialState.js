@@ -12,6 +12,7 @@ const initialState = {
   },
   snake: {
     direction: directions.TO_RIGHT,
+    body: [],
     position: null
   }
 };

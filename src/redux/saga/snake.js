@@ -4,6 +4,7 @@ import foodTypes from 'types/food';
 import snakeTypes from 'types/snake';
 
 const getDirection = state => state.snake.direction;
+const getBody = state => state.snake.body;
 const getPosition = state => state.snake.position;
 const getFoodPosition = state => state.food.position;
 
@@ -42,8 +43,10 @@ const getNewPosition = (direction, position) => {
 function* handlePositionChange() {
   const position = yield select(getPosition);
   const direction = yield select(getDirection);
+  const body = yield select(getBody);
   const foodPosition = yield select(getFoodPosition);
   const newPosition = getNewPosition(direction, position);
+  let newBody = [];
 
   if (
     foodPosition &&
@@ -55,10 +58,16 @@ function* handlePositionChange() {
     });
   }
 
+  if (body.length > 0) {
+    newBody = [position, ...body];
+    newBody.pop();
+  }
+
   // Wait and move again
   yield delay(500);
   yield put({
     type: snakeTypes.SET_SNAKE_POSITION,
+    body: newBody,
     position: newPosition
   });
 }
@@ -66,10 +75,18 @@ function* handlePositionChange() {
 function* handleDirectionChange() {
   const position = yield select(getPosition);
   const direction = yield select(getDirection);
+  const body = yield select(getBody);
   const newPosition = getNewPosition(direction, position);
+  let newBody = [];
+
+  if (body.length > 0) {
+    newBody = [position, ...body];
+    newBody.pop();
+  }
 
   yield put({
     type: snakeTypes.SET_SNAKE_POSITION,
+    body: newBody,
     position: newPosition
   });
 }

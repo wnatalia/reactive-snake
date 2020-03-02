@@ -15,6 +15,7 @@ function* handleSaveDimensions(action) {
 
   yield put({
     type: snakeTypes.SET_SNAKE_POSITION,
+    body: [],
     position: snakePosition
   });
 
