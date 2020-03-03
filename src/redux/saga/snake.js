@@ -40,13 +40,23 @@ const getNewPosition = (direction, position) => {
   };
 };
 
+const createNewBody = (body, position) => {
+  let newBody = [];
+  if (body.length > 0) {
+    newBody = [position, ...body];
+    newBody.pop();
+  }
+
+  return newBody;
+};
+
 function* handlePositionChange() {
   const position = yield select(getPosition);
   const direction = yield select(getDirection);
   const body = yield select(getBody);
   const foodPosition = yield select(getFoodPosition);
   const newPosition = getNewPosition(direction, position);
-  let newBody = [];
+  const newBody = createNewBody(body, position);
 
   if (
     foodPosition &&
@@ -56,11 +66,6 @@ function* handlePositionChange() {
     yield put({
       type: foodTypes.SET_AS_EATEN
     });
-  }
-
-  if (body.length > 0) {
-    newBody = [position, ...body];
-    newBody.pop();
   }
 
   // Wait and move again
@@ -77,12 +82,7 @@ function* handleDirectionChange() {
   const direction = yield select(getDirection);
   const body = yield select(getBody);
   const newPosition = getNewPosition(direction, position);
-  let newBody = [];
-
-  if (body.length > 0) {
-    newBody = [position, ...body];
-    newBody.pop();
-  }
+  const newBody = createNewBody(body, position);
 
   yield put({
     type: snakeTypes.SET_SNAKE_POSITION,

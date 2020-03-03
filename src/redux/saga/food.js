@@ -9,7 +9,7 @@ const getSnake = state => state.snake;
 function* handleEating() {
   const boardDimensions = yield select(getBoardDimensions);
   const snake = yield select(getSnake);
-  let newFoodPosition = generateFoodPosition(boardDimensions, snake.position);
+  let newFoodPosition = generateFoodPosition(boardDimensions, snake);
   let growingPartPosition;
 
   if (snake.body.length > 0) {

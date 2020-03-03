@@ -11,7 +11,10 @@ function* handleSaveDimensions(action) {
     y: Math.ceil(action.dimensions.y / 2) - 1
   };
 
-  let foodPosition = generateFoodPosition(dimensions, snakePosition);
+  let foodPosition = generateFoodPosition(dimensions, {
+    body: [],
+    position: snakePosition
+  });
 
   yield put({
     type: snakeTypes.SET_SNAKE_POSITION,
