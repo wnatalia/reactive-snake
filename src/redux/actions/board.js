@@ -1,4 +1,4 @@
-import types from 'types/snake';
+import types from 'types/board';
 
 export default {
   saveDimensions: dimensions => ({

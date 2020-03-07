@@ -2,6 +2,7 @@ import { put, select, takeEvery } from 'redux-saga/effects';
 import types from 'types/food';
 import { generateFoodPosition } from 'helpers/food';
 import foodActions from 'actions/food';
+import counterActions from 'actions/counter';
 
 const getBoardDimensions = state => state.board.dimensions;
 const getSnake = state => state.snake;
@@ -13,7 +14,7 @@ function* handleEating() {
 
   yield put(foodActions.setPosition(newFoodPosition));
 
-  // todo: add points incrementation;
+  yield put(counterActions.increment());
 }
 
 export default function* foodSaga() {

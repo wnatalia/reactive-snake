@@ -7,6 +7,7 @@ import Food from '../Food';
 import Snake from '../Snake';
 import gameActions from 'actions/game';
 import snakeActions from 'actions/snake';
+import Counter from '../Counter';
 
 const Board = () => {
   const { dimensions, isPaused, isOver, snakeDirection } = useSelector(
@@ -88,14 +89,17 @@ const Board = () => {
     }
 
     return (
-      <div
-        styleName="board-grid"
-        style={{ width: dimensions.x * 25, height: dimensions.y * 25 }}
-      >
-        {grid}
-        <Food />
-        <Snake />
-      </div>
+      <>
+        <Counter />
+        <div
+          styleName="board-grid"
+          style={{ width: dimensions.x * 25, height: dimensions.y * 25 }}
+        >
+          {grid}
+          <Food />
+          <Snake />
+        </div>
+      </>
     );
   } else {
     return <Form />;

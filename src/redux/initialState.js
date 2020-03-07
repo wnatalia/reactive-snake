@@ -4,6 +4,7 @@ const initialState = {
   board: {
     dimensions: null
   },
+  counter: 0,
   food: {
     position: null
   },
