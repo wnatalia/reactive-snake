@@ -8,7 +8,9 @@ const initialState = {
     position: null
   },
   game: {
-    isInitialized: false
+    isInitialized: false,
+    isPaused: false,
+    isOver: false
   },
   snake: {
     direction: directions.TO_RIGHT,

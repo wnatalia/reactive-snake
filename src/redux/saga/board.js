@@ -1,8 +1,8 @@
 import { put, takeEvery } from 'redux-saga/effects';
 import boardTypes from 'types/board';
-import foodTypes from 'types/food';
-import snakeTypes from 'types/snake';
 import { generateFoodPosition } from 'helpers/food';
+import snakeActions from 'actions/snake';
+import foodActions from 'actions/food';
 
 function* handleSaveDimensions(action) {
   const { dimensions } = action;
@@ -16,16 +16,9 @@ function* handleSaveDimensions(action) {
     position: snakePosition
   });
 
-  yield put({
-    type: snakeTypes.SET_SNAKE_POSITION,
-    body: [],
-    position: snakePosition
-  });
+  yield put(snakeActions.setPosition([], snakePosition));
 
-  yield put({
-    type: foodTypes.SET_FOOD_POSITION,
-    position: foodPosition
-  });
+  yield put(foodActions.setPosition(foodPosition));
 }
 
 export default function* boardSaga() {

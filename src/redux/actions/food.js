@@ -1,8 +1,11 @@
 import types from 'types/food';
 
 export default {
-  savePosition: position => ({
-    type: types.SET_FOOD_POSITION,
+  setAsEaten: () => ({
+    type: types.SET_AS_EATEN
+  }),
+  setPosition: position => ({
+    type: types.SET_POSITION,
     position: position
   })
 };

@@ -5,12 +5,13 @@ export default {
     type: types.GROW,
     position: position
   }),
-  setSnakeDirection: direction => ({
-    type: types.SET_SNAKE_DIRECTION,
+  setDirection: direction => ({
+    type: types.SET_DIRECTION,
     direction: direction
   }),
-  setSnakePosition: position => ({
-    type: types.SET_SNAKE_POSITION,
+  setPosition: (body, position) => ({
+    type: types.SET_POSITION,
+    body: body,
     position: position
   })
 };
