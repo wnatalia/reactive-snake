@@ -7,6 +7,9 @@ export default {
   pause: () => ({
     type: types.PAUSE
   }),
+  restart: () => ({
+    type: types.RESTART
+  }),
   resume: () => ({
     type: types.RESUME
   }),

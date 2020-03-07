@@ -6,19 +6,21 @@ import foodActions from 'actions/food';
 
 function* handleSaveDimensions(action) {
   const { dimensions } = action;
-  const snakePosition = {
-    x: Math.ceil(action.dimensions.x / 2) - 1,
-    y: Math.ceil(action.dimensions.y / 2) - 1
-  };
+  if (dimensions) {
+    const snakePosition = {
+      x: Math.ceil(action.dimensions.x / 2) - 1,
+      y: Math.ceil(action.dimensions.y / 2) - 1
+    };
 
-  let foodPosition = generateFoodPosition(dimensions, {
-    body: [],
-    position: snakePosition
-  });
+    let foodPosition = generateFoodPosition(dimensions, {
+      body: [],
+      position: snakePosition
+    });
 
-  yield put(snakeActions.setPosition([], snakePosition));
+    yield put(snakeActions.setPosition([], snakePosition));
 
-  yield put(foodActions.setPosition(foodPosition));
+    yield put(foodActions.setPosition(foodPosition));
+  }
 }
 
 export default function* boardSaga() {

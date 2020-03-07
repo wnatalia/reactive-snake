@@ -6,6 +6,8 @@ export default (state = {}, action) => {
       return { ...state, isInitialized: true, isOver: false };
     case types.PAUSE:
       return { ...state, isPaused: true };
+    case types.RESTART:
+      return { isOver: false };
     case types.RESUME:
       return { ...state, isPaused: false };
     case types.END:

@@ -5,6 +5,9 @@ export default {
     type: types.GROW,
     position: position
   }),
+  reset: () => ({
+    type: types.RESET
+  }),
   setDirection: direction => ({
     type: types.SET_DIRECTION,
     direction: direction

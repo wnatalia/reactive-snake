@@ -27,6 +27,10 @@ const Board = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isPaused, isOver, snakeDirection]);
 
+  const handleGameRestart = () => {
+    dispatch(gameActions.restart());
+  };
+
   const handleKeyDown = event => {
     const movesVertically =
       snakeDirection === directions.TO_TOP ||
@@ -98,6 +102,12 @@ const Board = () => {
           {grid}
           <Food />
           <Snake />
+          {isOver && (
+            <div styleName="game-over">
+              <p>Ooops, you lost</p>
+              <button onClick={handleGameRestart}>Restart</button>
+            </div>
+          )}
         </div>
       </>
     );
