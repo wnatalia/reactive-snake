@@ -1,4 +1,5 @@
 $snake__background: $violet;
+$snake__border: $white;
 
 .snake {
   background: $snake__background;
@@ -7,4 +8,6 @@ $snake__background: $violet;
   position: absolute;
   top: 0;
   left: 0;
+  border: 1px solid $snake__border;
+  border-radius: 2px;
 }

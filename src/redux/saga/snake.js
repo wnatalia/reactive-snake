@@ -94,7 +94,7 @@ function* handlePositionChange(action) {
         action.type !== snakeTypes.SET_DIRECTION &&
         action.type !== gameTypes.RESUME
       ) {
-        yield delay(500);
+        yield delay(200);
       }
       yield put(snakeActions.setPosition(newBody, newPosition));
     }

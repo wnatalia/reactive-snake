@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { Form } from './containers/Form';
 import './styles.scss';
@@ -8,6 +8,24 @@ import Snake from '../Snake';
 import gameActions from 'actions/game';
 import snakeActions from 'actions/snake';
 import Counter from '../Counter';
+import { CELL_SIZE, MOBILE_CELL_SIZE } from 'constants/cells';
+
+const useDeviceType = () => {
+  const getDeviceType = () => (window.innerWidth > 768 ? 'desktop' : 'mobile');
+  const [deviceType, setDeviceType] = useState(getDeviceType());
+
+  useEffect(() => {
+    function handleResize() {
+      setDeviceType(getDeviceType());
+    }
+
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return deviceType;
+};
 
 const Board = () => {
   const { dimensions, isPaused, isOver, snakeDirection } = useSelector(
@@ -20,6 +38,7 @@ const Board = () => {
     shallowEqual
   );
   const dispatch = useDispatch();
+  const deviceType = useDeviceType();
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
@@ -82,33 +101,35 @@ const Board = () => {
   };
 
   if (dimensions) {
-    let grid = [];
-    for (let i = 0; i < dimensions.y; i++) {
-      for (let j = 0; j < dimensions.x; j++) {
-        grid = [
-          ...grid,
-          <div styleName="cell" key={`x${j}y${i}`}>{`x: ${j}, y: ${i}`}</div>
-        ];
-      }
+    let cellSize;
+    if (deviceType === 'mobile') {
+      cellSize = MOBILE_CELL_SIZE;
+    } else {
+      cellSize = CELL_SIZE;
     }
 
     return (
       <>
         <Counter />
         <div
-          styleName="board-grid"
-          style={{ width: dimensions.x * 25, height: dimensions.y * 25 }}
+          styleName={isOver ? 'board over' : 'board'}
+          style={{
+            width: dimensions.x * cellSize + 4,
+            height: dimensions.y * cellSize + 4
+          }}
         >
-          {grid}
-          <Food />
-          <Snake />
-          {isOver && (
-            <div styleName="game-over">
-              <p>Ooops, you lost</p>
-              <button onClick={handleGameRestart}>Restart</button>
-            </div>
-          )}
+          <Food cellSize={cellSize} />
+          <Snake cellSize={cellSize} />
         </div>
+        {isOver && (
+          <div styleName="game-over">
+            <h3 styleName="title">Ooops...</h3>
+            <p>You lost</p>
+            <button className="button primary" onClick={handleGameRestart}>
+              Restart
+            </button>
+          </div>
+        )}
       </>
     );
   } else {

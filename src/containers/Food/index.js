@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import './styles.scss';
 
-const Food = () => {
+const Food = ({ cellSize }) => {
   const foodPosition = useSelector(state => state.food.position);
 
   if (foodPosition) {
@@ -10,8 +10,10 @@ const Food = () => {
       <div
         styleName="food"
         style={{
-          transform: `translate(${foodPosition.x * 25}px, ${foodPosition.y *
-            25}px)`
+          width: cellSize,
+          height: cellSize,
+          transform: `translate(${foodPosition.x *
+            cellSize}px, ${foodPosition.y * cellSize}px)`
         }}
       />
     );

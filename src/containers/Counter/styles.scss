@@ -1,3 +1,8 @@
+$counter__color: $light-violet;
+
 .counter {
-  font-weight: 700;
+  color: $counter__color;
+  font-weight: 400;
+  font-size: 3rem;
+  margin-bottom: 20px;
 }

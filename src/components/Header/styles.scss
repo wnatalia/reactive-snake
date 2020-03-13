@@ -1,8 +1,10 @@
-$header__title__color: $violet;
+$header__background: $gradient;
+$header__color: $white;
 
 .header {
   height: 80px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  background: $gradient;
 
   .inner {
     display: flex;
@@ -12,5 +14,8 @@ $header__title__color: $violet;
 
   .title {
     margin: 0;
+    color: $header__color;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }

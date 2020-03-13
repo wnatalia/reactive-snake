@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import './styles.scss';
 
-const Snake = () => {
+const Snake = ({ cellSize }) => {
   const snakePosition = useSelector(state => state.snake.position);
   const body = useSelector(state => state.snake.body);
 
@@ -12,8 +12,10 @@ const Snake = () => {
         <div
           styleName="snake"
           style={{
-            transform: `translate(${snakePosition.x * 25}px, ${snakePosition.y *
-              25}px)`
+            width: cellSize,
+            height: cellSize,
+            transform: `translate(${snakePosition.x *
+              cellSize}px, ${snakePosition.y * cellSize}px)`
           }}
         />
         {body.map((part, index) => (
@@ -21,7 +23,10 @@ const Snake = () => {
             key={`x${part.x}y${part.y}${index}`}
             styleName="snake"
             style={{
-              transform: `translate(${part.x * 25}px, ${part.y * 25}px)`
+              width: cellSize,
+              height: cellSize,
+              transform: `translate(${part.x * cellSize}px, ${part.y *
+                cellSize}px)`
             }}
           />
         ))}
