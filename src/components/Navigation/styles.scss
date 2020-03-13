@@ -1,0 +1,40 @@
+$navigation-link__color: $white;
+
+.navigation {
+  .list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    .item {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      .link {
+        color: $navigation-link__color;
+        text-decoration: none;
+        display: block;
+        position: relative;
+        padding: 5px 0;
+        font-weight: 600;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        &:after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          width: 100%;
+          height: 1px;
+          transform: translateX(100%);
+          background: $navigation-link__color;
+          transition: transform 200ms ease-in-out;
+        }
+        &:hover {
+          &:after {
+            transform: translateX(0);
+          }
+        }
+      }
+    }
+  }
+}

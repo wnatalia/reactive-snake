@@ -1,15 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import types from 'types/game';
+import actions from 'actions/game';
 import './styles.scss';
 import Board from 'containers/Board';
 
 const Game = () => {
   const isInitialized = useSelector(state => state.game.isInitialized);
+  const dimensions = useSelector(state => state.board.dimensions);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    return () => {
+      if (dimensions) {
+        dispatch(actions.pause());
+      }
+    };
+  }, []);
+
   const handleClick = () => {
-    dispatch({ type: types.START });
+    dispatch(actions.start());
   };
 
   return (
