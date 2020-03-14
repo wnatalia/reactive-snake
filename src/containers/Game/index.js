@@ -28,7 +28,7 @@ const Game = () => {
         <>
           <h2 styleName="welcome-title">
             Welcome to
-            <span styleName="welcome-title-emphasis"> React Snake</span>.
+            <span styleName="welcome-title-emphasis"> Reactive Snake</span>.
           </h2>
           <p styleName="welcome-text">Press start to continue...</p>
           <button className="button primary" onClick={handleClick}>

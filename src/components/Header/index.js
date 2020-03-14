@@ -14,7 +14,7 @@ const Header = ({ location }) => {
               Reactive Snake
             </Link>
           )}
-          {location.pathname === '/' && 'React Snake'}
+          {location.pathname === '/' && 'Reactive Snake'}
         </h1>
         <Navigation />
       </div>
