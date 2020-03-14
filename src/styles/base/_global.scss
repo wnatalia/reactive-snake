@@ -12,14 +12,34 @@ html {
 body {
   font: 300 1.6rem/1.2 $f-basic;
   letter-spacing: 0.075em;
+  /* For sticky footer */
+  min-height: 100vh;
+  padding-bottom: 60px;
+  position: relative;
 }
 
 h1, h2, h3 {
   font-weight: 600;
 }
 
+h1 {
+  font-size: 3rem;
+  @media (max-width: $sm) {
+    font-size: 2.4rem
+  }
+}
+
 h2 {
   font-size: 2.8rem;
+  @media (max-width: $sm) {
+    font-size: 2.6rem
+  }
+  @media (max-width: $xs) {
+    font-size: 2.2rem
+  }
+  @media (max-width: $sm) and (orientation: landscape) {
+    font-size: 2.2rem
+  }
 }
 
 
@@ -39,11 +59,24 @@ h2 {
   border: 0;
   cursor: pointer;
   padding: 10px 20px;
-  margin: 20px 0;
+  margin: 0 10px;
   border-radius: 3px;
   opacity: 0.95;
   transition: opacity 200ms ease-in-out;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  @media (max-width: $sm) {
+    font-size: 2.2rem;
+    padding: 7px 18px;
+  }
+  @media (max-width: $sm) and (orientation: landscape) {
+    font-size: 2rem;
+    padding: 5px 15px;
+    margin-bottom: 5px;
+  }
+  @media (max-width: $xs) {
+    font-size: 2rem;
+    padding: 5px 15px;
+  }
   &:hover {
     opacity: 1;
   }

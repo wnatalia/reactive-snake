@@ -41,6 +41,7 @@ const Board = () => {
   );
   const dispatch = useDispatch();
   const deviceType = useDeviceType();
+  const isTouchDevice = 'ontouchstart' in document.documentElement;
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
@@ -95,29 +96,39 @@ const Board = () => {
 
   const handleKeyDown = event => {
     let button;
-    switch (event.keyCode) {
-      case 37:
-        button = directions.TO_LEFT;
-        break;
-      case 38:
-        button = directions.TO_TOP;
-        break;
-      case 39:
-        button = directions.TO_RIGHT;
-        break;
-      case 40:
-        button = directions.TO_BOTTOM;
-        break;
-      case 32:
-      case 19:
-        if (isPaused) {
-          button = 'RESUME';
-        } else {
-          button = 'PAUSE';
-        }
-        break;
-      default:
-        return null;
+    if (
+      event.keyCode === 37 ||
+      event.keyCode === 38 ||
+      event.keyCode === 39 ||
+      event.keyCode === 40 ||
+      event.keyCode === 32 ||
+      event.keyCode === 19
+    ) {
+      event.preventDefault();
+      switch (event.keyCode) {
+        case 37:
+          button = directions.TO_LEFT;
+          break;
+        case 38:
+          button = directions.TO_TOP;
+          break;
+        case 39:
+          button = directions.TO_RIGHT;
+          break;
+        case 40:
+          button = directions.TO_BOTTOM;
+          break;
+        case 32:
+        case 19:
+          if (isPaused) {
+            button = 'RESUME';
+          } else {
+            button = 'PAUSE';
+          }
+          break;
+        default:
+          return null;
+      }
     }
 
     return button ? handleChange(button) : false;
@@ -133,35 +144,37 @@ const Board = () => {
 
     return (
       <>
-        {deviceType !== 'mobile' && (
-          <div styleName="board-info-text">
-            Use arrow keys to change direction. Press space to pause.
+        <div styleName="container">
+          {deviceType !== 'mobile' && (
+            <div styleName="board-info-text">
+              Use arrow keys to change direction. Press space to pause.
+            </div>
+          )}
+          <div
+            styleName="board-top-wrapper"
+            style={{
+              width: dimensions.x * cellSize + 4
+            }}
+          >
+            <Counter />
+            <PauseButton
+              handleChange={handleChange}
+              isGamePaused={isPaused}
+              isGameOver={isOver}
+            />
           </div>
-        )}
-        <div
-          styleName="board-top-wrapper"
-          style={{
-            width: dimensions.x * cellSize + 4
-          }}
-        >
-          <Counter />
-          <PauseButton
-            handleChange={handleChange}
-            isGamePaused={isPaused}
-            isGameOver={isOver}
-          />
+          <div
+            styleName={isOver ? 'board over' : 'board'}
+            style={{
+              width: dimensions.x * cellSize + 4,
+              height: dimensions.y * cellSize + 4
+            }}
+          >
+            <Food cellSize={cellSize} />
+            <Snake cellSize={cellSize} />
+          </div>
         </div>
-        <div
-          styleName={isOver ? 'board over' : 'board'}
-          style={{
-            width: dimensions.x * cellSize + 4,
-            height: dimensions.y * cellSize + 4
-          }}
-        >
-          <Food cellSize={cellSize} />
-          <Snake cellSize={cellSize} />
-        </div>
-        {deviceType === 'mobile' && (
+        {isTouchDevice && (
           <MobileButtons
             handleChange={handleChange}
             isGamePaused={isPaused}
@@ -179,7 +192,11 @@ const Board = () => {
       </>
     );
   } else {
-    return <Form />;
+    return (
+      <div styleName="container">
+        <Form />
+      </div>
+    );
   }
 };
 

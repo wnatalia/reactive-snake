@@ -5,6 +5,9 @@ $header__color: $white;
   height: 80px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   background: $gradient;
+  @media (max-width: $sm) and (orientation: landscape) {
+    height: 60px;
+  }
 
   .inner {
     display: flex;

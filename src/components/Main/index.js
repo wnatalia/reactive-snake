@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './styles.scss';
 
 const Main = ({ children }) => (
-  <main styleName="main">
+  <main>
     <div className="wrapper">{children}</div>
   </main>
 );

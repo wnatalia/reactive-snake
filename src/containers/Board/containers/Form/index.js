@@ -8,13 +8,13 @@ import './styles.scss';
 const Error = ({ errors, value }) => (
   <>
     {errors[value] && errors[value].type === 'max' && (
-      <span styleName="error">Number must smaller than 20</span>
+      <span styleName="error">The number must smaller than 30</span>
     )}
     {errors[value] && errors[value].type === 'min' && (
-      <span styleName="error">Number must greater than 5</span>
+      <span styleName="error">The number must greater than 15</span>
     )}
     {errors[value] && errors[value].type === 'required' && (
-      <span styleName="error">This value is required</span>
+      <span styleName="error">This field is required</span>
     )}
   </>
 );
@@ -36,7 +36,7 @@ export const Form = () => {
 
   return (
     <>
-      <h2>Select your board dimensions:</h2>
+      <h2 styleName="form-title">Select your board dimensions:</h2>
       <form onSubmit={handleSubmit(onSubmit)} styleName="form">
         <div styleName="wrapper">
           <label styleName="label" htmlFor="dimensionX">
@@ -46,7 +46,7 @@ export const Form = () => {
             id="dimensionX"
             type="number"
             name="x"
-            styleName="input"
+            styleName={errors.x ? 'input error' : 'input'}
             defaultValue={20}
             ref={register({ min: 15, max: 30, required: true })}
           />
@@ -60,7 +60,7 @@ export const Form = () => {
             id="dimensionY"
             type="number"
             name="y"
-            styleName="input"
+            styleName={errors.y ? 'input error' : 'input'}
             defaultValue={20}
             ref={register({ min: 15, max: 30, required: true })}
           />

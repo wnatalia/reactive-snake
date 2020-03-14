@@ -1,7 +1,7 @@
 $input__border: $violet;
 $input__color: $dark;
 $label__color: $dark;
-
+$error__color: $red;
 
 .form {
   display: flex;
@@ -15,13 +15,37 @@ $label__color: $dark;
     flex-wrap: wrap;
     width: 396px;
     max-width: 100%;
-    margin-bottom: 20px;
+    position: relative;
+    margin-bottom: 10px;
+    padding-bottom: 25px;
+    @media (max-width: $sm) {
+      padding-bottom: 20px;
+    }
+    @media (max-width: $xs) {
+      margin-bottom: 5px;
+    }
+    @media (max-width: $sm) and (orientation: landscape) {
+      margin-bottom: 5px;
+    }
 
-    .label {
-      margin-right: 20px;
-      color: $label__color;
-      font-size: 2.4rem;
-      font-weight: 400;
+    span.error {
+      width: 100%;
+      text-align: center;
+      margin-top: 5px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      font-size: 1.6rem;
+      color: $error__color;
+      @media (max-width: $sm) {
+        font-size: 1.4rem;
+      }
+      @media (max-width: $xs) {
+        font-size: 1.3rem;
+      }
+      @media (max-width: $sm) and (orientation: landscape) {
+        font-size: 1.3rem;
+      }
     }
 
     .input {
@@ -32,7 +56,43 @@ $label__color: $dark;
       border-radius: 4px;
       padding: 10px 0;
       color: $input__color;
+      @media (max-width: $sm) {
+        width: 50px;
+        font-size: 2rem;
+        padding: 8px 0;
+      }
+      @media (max-width: $xs) {
+        width: 40px;
+        font-size: 1.6rem;
+        padding: 5px 0;
+      }
+      &.error {
+        border-color: $error__color;
+      }
     }
+
+    .label {
+      margin-right: 15px;
+      color: $label__color;
+      font-size: 2.4rem;
+      font-weight: 400;
+      @media (max-width: $sm) {
+        font-size: 2rem;
+      }
+      @media (max-width: $xs) {
+        font-size: 1.6rem;
+      }
+    }
+  }
+}
+
+.form-title {
+  text-align: center;
+  @media (max-width: $sm) and (orientation: landscape) {
+    margin-top: 0;
+  }
+  @media (max-width: $xs) {
+    margin-top: 0;
   }
 }
 

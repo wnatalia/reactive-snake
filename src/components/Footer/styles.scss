@@ -4,6 +4,10 @@ $footer__color: $white;
 .footer {
   background: $footer__background;
   height: 50px;
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
 
   .inner {
     display: flex;

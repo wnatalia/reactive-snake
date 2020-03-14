@@ -11,11 +11,16 @@ $game-over__title: $dark;
   &.over {
     opacity: 0.5;
   }
+
+  @media (max-width: $sm) and (orientation: landscape) {
+    height: 100%;
+  }
 }
 
 .board-info-text {
-  margin-top: -20px;
-  margin-bottom: 40px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  text-align: center;
   &:global {
     animation: appear-and-disappear 7s ease-in-out forwards;
   }
@@ -25,7 +30,11 @@ $game-over__title: $dark;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin: 0 auto 20px;
+}
+
+.container {
+  max-width: 100%;
 }
 
 .game-over {

@@ -16,8 +16,14 @@ $navigation-link__color: $white;
         position: relative;
         padding: 5px 0;
         font-weight: 600;
+        font-size: 1.6rem;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        text-align: right;
+        white-space: nowrap;
+        @media (max-width: $xs) {
+          font-size: 1.4rem
+        }
         &:after {
           content: '';
           position: absolute;
