@@ -1,0 +1,65 @@
+$about-heading-fallback__color: $violet;
+$about-heading__color: $light-to-dark-gradient;
+$about__color: $dark;
+$about-link__color: $violet;
+
+.about {
+  .container {
+    max-width: 450px;
+    margin: 0 auto;
+    padding: 40px 0 80px;
+    color: $about__color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    .heading {
+      text-align: center;
+      color: $about-heading-fallback__color;
+      @supports ((background-clip: text) or (-webkit-background-clip: text)) and
+      ((text-fill-color: transparent) or (-webkit-text-fill-color: transparent)) {
+        background: $about-heading__color;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-fill-color: transparent;
+      }
+    }
+
+    .list {
+      .item {
+        margin-bottom: 10px;
+        text-align: left;
+      }
+    }
+
+    .link {
+      color: $about-link__color;
+      text-decoration: none;
+      display: inline-block;
+      padding-bottom: 4px;
+      overflow: hidden;
+      font-weight: 600;
+      position: relative;
+
+      &:after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: $about-link__color;
+        transform: translateX(-100%);
+        transition: transform 200ms ease-in-out;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+
+      &:hover {
+        &:after {
+          transform: translateX(0);
+        }
+      }
+    }
+  }
+}

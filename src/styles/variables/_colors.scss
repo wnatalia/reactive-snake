@@ -8,3 +8,4 @@ $gray: #888;
 $dark: #333;
 
 $gradient: linear-gradient(90deg, $light-violet 0% , $violet 100%);
+$light-to-dark-gradient: linear-gradient(90deg, $lightest-violet 0% , $light-violet 45%, $violet 100%);

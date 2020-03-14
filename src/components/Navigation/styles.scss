@@ -30,10 +30,13 @@ $navigation-link__color: $white;
           bottom: 0;
           right: 0;
           width: 100%;
-          height: 1px;
-          transform: translateX(100%);
+          height: 2px;
+          transform: translateX(-100%);
           background: $navigation-link__color;
           transition: transform 200ms ease-in-out;
+          @media (max-width: $xs) {
+            height: 1px;
+          }
         }
         &:hover {
           &:after {
