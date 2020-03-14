@@ -1,0 +1,40 @@
+$pause-button__color: $light-violet;
+$pause-button--hover__color: $violet;
+$pause-button__width: 38px;
+$pause-button__height: $pause-button__width;
+
+
+.pause-button {
+  width: $pause-button__width;
+  height: $pause-button__height;
+  font-size: 0;
+  border: 0;
+  box-shadow: none;
+  background: 0;
+  padding: 0;
+  display: block;
+  cursor: pointer;
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .icon {
+    max-width: 100%;
+    max-height: 100%;
+
+    path {
+      fill: $pause-button__color;
+    }
+  }
+
+  &:focus {
+    outline: 0;
+
+    .arrow {
+      path {
+        fill: $pause-button--hover__color;
+      }
+    }
+  }
+}

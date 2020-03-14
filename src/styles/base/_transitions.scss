@@ -24,3 +24,19 @@
   height: 100%;
   position: relative;
 }
+
+
+@keyframes :global(appear-and-disappear) {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1
+  }
+  100% {
+    opacity: 0;
+  }
+}

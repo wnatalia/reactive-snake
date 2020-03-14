@@ -1,5 +1,5 @@
 $board__border: $dark;
-$game-over__title: $violet;
+$game-over__title: $dark;
 
 .board {
   display: flex;
@@ -13,9 +13,25 @@ $game-over__title: $violet;
   }
 }
 
+.board-info-text {
+  margin-top: -20px;
+  margin-bottom: 40px;
+  &:global {
+    animation: appear-and-disappear 7s ease-in-out forwards;
+  }
+}
+
+.board-top-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
 .game-over {
   font-size: 1.8rem;
   text-align: center;
+  position: absolute;
   .title {
     color: $game-over__title;
     font-size: 2.2rem;

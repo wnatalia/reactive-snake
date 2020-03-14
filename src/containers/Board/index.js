@@ -9,6 +9,8 @@ import gameActions from 'actions/game';
 import snakeActions from 'actions/snake';
 import Counter from '../Counter';
 import { CELL_SIZE, MOBILE_CELL_SIZE } from 'constants/cells';
+import MobileButtons from './components/MobileButtons';
+import PauseButton from './components/PauseButton';
 
 const useDeviceType = () => {
   const getDeviceType = () => (window.innerWidth > 768 ? 'desktop' : 'mobile');
@@ -50,54 +52,75 @@ const Board = () => {
     dispatch(gameActions.restart());
   };
 
-  const handleKeyDown = event => {
+  const handleChange = button => {
     const movesVertically =
       snakeDirection === directions.TO_TOP ||
       snakeDirection === directions.TO_BOTTOM;
 
     let newDirection;
     if (!isOver) {
-      switch (event.keyCode) {
-        // Arrow left
-        case 37:
+      if (
+        ((button === directions.TO_LEFT || button === directions.TO_RIGHT) &&
+          movesVertically) ||
+        ((button === directions.TO_TOP || button === directions.TO_BOTTOM) &&
+          !movesVertically)
+      ) {
+        newDirection = button;
+      }
+      switch (button) {
+        case directions.TO_LEFT:
+        case directions.TO_RIGHT:
           if (movesVertically) {
-            newDirection = directions.TO_LEFT;
+            newDirection = button;
           }
           break;
-        // Arrow up
-        case 38:
+        case directions.TO_TOP:
+        case directions.TO_BOTTOM:
           if (!movesVertically) {
-            newDirection = directions.TO_TOP;
+            newDirection = button;
           }
           break;
-        // Arrow right
-        case 39:
-          if (movesVertically) {
-            newDirection = directions.TO_RIGHT;
-          }
+        case 'PAUSE':
+          dispatch(gameActions.pause());
           break;
-        // Arrow down
-        case 40:
-          if (!movesVertically) {
-            newDirection = directions.TO_BOTTOM;
-          }
-          break;
-        // Space
-        case 32:
-        // Pause/break key
-        // eslint-disable-next-line no-fallthrough
-        case 19:
-          if (isPaused) {
-            dispatch(gameActions.resume());
-          } else {
-            dispatch(gameActions.pause());
-          }
+        case 'RESUME':
+          dispatch(gameActions.resume());
           break;
       }
       if (newDirection && !isPaused) {
         dispatch(snakeActions.setDirection(newDirection));
       }
     }
+  };
+
+  const handleKeyDown = event => {
+    let button;
+    switch (event.keyCode) {
+      case 37:
+        button = directions.TO_LEFT;
+        break;
+      case 38:
+        button = directions.TO_TOP;
+        break;
+      case 39:
+        button = directions.TO_RIGHT;
+        break;
+      case 40:
+        button = directions.TO_BOTTOM;
+        break;
+      case 32:
+      case 19:
+        if (isPaused) {
+          button = 'RESUME';
+        } else {
+          button = 'PAUSE';
+        }
+        break;
+      default:
+        return null;
+    }
+
+    return button ? handleChange(button) : false;
   };
 
   if (dimensions) {
@@ -110,7 +133,24 @@ const Board = () => {
 
     return (
       <>
-        <Counter />
+        {deviceType !== 'mobile' && (
+          <div styleName="board-info-text">
+            Use arrow keys to change direction. Press space to pause.
+          </div>
+        )}
+        <div
+          styleName="board-top-wrapper"
+          style={{
+            width: dimensions.x * cellSize + 4
+          }}
+        >
+          <Counter />
+          <PauseButton
+            handleChange={handleChange}
+            isGamePaused={isPaused}
+            isGameOver={isOver}
+          />
+        </div>
         <div
           styleName={isOver ? 'board over' : 'board'}
           style={{
@@ -121,10 +161,16 @@ const Board = () => {
           <Food cellSize={cellSize} />
           <Snake cellSize={cellSize} />
         </div>
+        {deviceType === 'mobile' && (
+          <MobileButtons
+            handleChange={handleChange}
+            isGamePaused={isPaused}
+            isGameOver={isOver}
+          />
+        )}
         {isOver && (
           <div styleName="game-over">
-            <h3 styleName="title">Ooops...</h3>
-            <p>You lost</p>
+            <h3 styleName="title">You lost</h3>
             <button className="button primary" onClick={handleGameRestart}>
               Restart
             </button>
