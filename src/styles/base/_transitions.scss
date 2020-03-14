@@ -1,18 +1,18 @@
 :global .fade {
   &-enter {
+    opacity: 0;
+    &-active {
+      opacity: 1;
+      transition: opacity 200ms ease-in-out;
+    }
+  }
+  &-exit {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     transition: opacity 200ms ease-in-out;
-    opacity: 0;
-    &-active {
-      opacity: 1;
-    }
-  }
-  &-exit {
     opacity: 1;
-    transition: opacity 200ms ease-in-out;
   }
   &-exit-active {
     opacity: 0;
