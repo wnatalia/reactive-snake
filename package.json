@@ -1,5 +1,5 @@
 {
-  "name": "react-snake-game",
+  "name": "reactive-snake",
   "version": "1.0.0",
   "description": "",
   "private": true,
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wnatalia/react-snake-game.git"
+    "url": "git+https://github.com/wnatalia/reactive-snake.git"
   },
   "author": "nw",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/wnatalia/react-snake-game/issues"
+    "url": "https://github.com/wnatalia/reactive-snake/issues"
   },
-  "homepage": "https://github.com/wnatalia/react-snake-game#readme",
+  "homepage": "https://github.com/wnatalia/reactive-snake#readme",
   "dependencies": {
     "@babel/cli": "^7.7.7",
     "@babel/core": "^7.7.7",

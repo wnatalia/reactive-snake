@@ -11,7 +11,7 @@ const Header = ({ location }) => {
         <h1 styleName="title">
           {location.pathname !== '/' && (
             <Link to="/" styleName="link">
-              React Snake
+              Reactive Snake
             </Link>
           )}
           {location.pathname === '/' && 'React Snake'}

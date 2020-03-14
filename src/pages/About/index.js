@@ -31,12 +31,12 @@ export const About = () => (
       </ul>
       <h3 styleName="title">Link to the repository:</h3>
       <a
-        href="https://github.com/wnatalia/react-snake-game.git"
+        href="https://github.com/wnatalia/reactive-snake"
         target="_blank"
         rel="noopener noreferrer"
         styleName="link"
       >
-        React Snake Game
+        Reactive Snake
       </a>
     </div>
   </div>
