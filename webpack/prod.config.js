@@ -1,17 +1,10 @@
-const common = require('./common.config');
 const path = require("path");
+const common = require('./common.config');
 
 
 module.exports = {
   ...common,
-  devtool: "inline-source-map",
-  devServer: {
-    contentBase: path.join(__dirname, "dist"),
-    historyApiFallback: true,
-    port: 3001,
-    open: true
-  },
-  mode: "development",
+  mode: "production",
   module: {
     rules: [
       ...common.module.rules,
@@ -28,7 +21,8 @@ module.exports = {
               },
               sourceMap: true
             }
-          }
+          },
+          "postcss-loader"
         ]
       },
       {
@@ -58,6 +52,7 @@ module.exports = {
               ]
             },
           },
+          "postcss-loader"
         ]
       }
     ]

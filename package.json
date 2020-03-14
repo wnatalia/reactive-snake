@@ -4,7 +4,8 @@
   "description": "",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --config webpack/dev.config.js --open"
+    "dev": "webpack-dev-server --config webpack/dev.config.js --open",
+    "start": "webpack --config webpack/prod.config.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
     "@babel/core": "^7.7.7",
     "@babel/preset-env": "^7.7.7",
     "@babel/preset-react": "^7.7.4",
+    "autoprefixer": "^9.7.4",
     "babel-loader": "^8.0.6",
     "babel-plugin-react-css-modules": "^5.2.6",
     "clean-webpack-plugin": "^3.0.0",
@@ -30,6 +32,7 @@
     "fibers": "^4.0.2",
     "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.13.1",
+    "postcss-loader": "^3.0.0",
     "postcss-scss": "^2.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
