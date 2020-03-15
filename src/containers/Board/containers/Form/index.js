@@ -66,7 +66,7 @@ export const Form = () => {
           />
           <Error errors={errors} value="y" />
         </div>
-        <input type="submit" className="button primary" />
+        <input type="submit" value="Submit" className="button primary" />
       </form>
     </>
   );
