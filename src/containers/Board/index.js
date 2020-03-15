@@ -47,7 +47,7 @@ const Board = () => {
     window.addEventListener('keydown', handleKeyDown);
 
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isPaused, isOver, snakeDirection]);
+  }, [isPaused, dimensions, isOver, snakeDirection]);
 
   const handleGameRestart = () => {
     dispatch(gameActions.restart());
@@ -59,7 +59,7 @@ const Board = () => {
       snakeDirection === directions.TO_BOTTOM;
 
     let newDirection;
-    if (!isOver) {
+    if (!isOver && dimensions) {
       if (
         ((button === directions.TO_LEFT || button === directions.TO_RIGHT) &&
           movesVertically) ||
