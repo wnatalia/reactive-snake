@@ -60,7 +60,6 @@
     "eslint-loader": "^3.0.3",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.17.0",
-    "google-fonts-plugin": "^5.0.2",
     "prettier": "^1.19.1",
     "webpack-dev-server": "^3.10.1"
   }

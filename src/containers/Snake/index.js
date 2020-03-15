@@ -20,7 +20,7 @@ const Snake = ({ cellSize }) => {
         />
         {body.map((part, index) => (
           <div
-            key={`x${part.x}y${part.y}${index}`}
+            key={`x${part.x}y${part.y}index${index}`}
             styleName="snake"
             style={{
               width: cellSize,

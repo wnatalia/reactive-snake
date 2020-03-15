@@ -1,7 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const {CleanWebpackPlugin} = require("clean-webpack-plugin");
-const GoogleFontsPlugin = require('google-fonts-plugin');
 
 
 module.exports = {
@@ -42,14 +41,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: true,
       template: path.resolve(__dirname, "..", "public", "index.html")
-    }),
-    new GoogleFontsPlugin({
-      "family": "Source Sans Pro",
-      "variants": [
-        "300",
-        "400",
-        "600",
-      ]
     })
   ],
   resolve: {
