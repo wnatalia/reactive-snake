@@ -9,20 +9,39 @@
     ],
     "@babel/preset-react"
   ],
-
-  "plugins": [
-    [
-      "react-css-modules",
-      {
-        "generateScopedName": "[local]--[hash:base64:5]",
-        "handleMissingStyleName": "warn",
-        "webpackHotModuleReloading": true,
-        "filetypes": {
-          ".scss": {
-            "syntax": "postcss-scss"
+  "env": {
+    "development": {
+      "plugins": [
+        [
+          "react-css-modules",
+          {
+            "generateScopedName": "[local]--[hash:base64:5]",
+            "handleMissingStyleName": "warn",
+            "webpackHotModuleReloading": true,
+            "filetypes": {
+              ".scss": {
+                "syntax": "postcss-scss"
+              }
+            }
           }
-        }
-      }
-    ]
-  ]
+        ]
+      ]
+    },
+    "production": {
+      "plugins": [
+        [
+          "react-css-modules",
+          {
+            "generateScopedName": "[hash:base64:5]",
+            "handleMissingStyleName": "warn",
+            "filetypes": {
+              ".scss": {
+                "syntax": "postcss-scss"
+              }
+            }
+          }
+        ]
+      ]
+    }
+  }
 }

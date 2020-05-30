@@ -5,14 +5,6 @@ const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 
 module.exports = {
   entry: path.resolve(__dirname, "..", "src", "index.js"),
-  devtool: "inline-source-map",
-  devServer: {
-    contentBase: path.join(__dirname, "dist"),
-    historyApiFallback: true,
-    port: 3001,
-    open: true
-  },
-  mode: "development",
   module: {
     rules: [
       {

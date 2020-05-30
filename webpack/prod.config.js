@@ -14,13 +14,7 @@ module.exports = {
         use: [
           "style-loader",
           {
-            loader: "css-loader",
-            options: {
-              modules: {
-                localIdentName: "[local]--[hash:base64:5]"
-              },
-              sourceMap: true
-            }
+            loader: "css-loader"
           },
           "postcss-loader"
         ]
@@ -34,13 +28,12 @@ module.exports = {
             loader: "css-loader",
             options: {
               modules: {
-                localIdentName: "[local]--[hash:base64:5]"
+                localIdentName: '[hash:base64:5]'
               },
-              sourceMap: true
             }
           },
           {
-            loader: "sass-loader",
+            loader: "sass-loader"
           },
           {
             loader: "sass-resources-loader",
