@@ -6,15 +6,15 @@ import Navigation from 'components/Navigation';
 
 const Header = ({ location }) => {
   return (
-    <header styleName="header">
+    <header styleName="header" data-test="component-header">
       <div className="wrapper" styleName="inner">
         <h1 styleName="title">
-          {location.pathname !== '/' && (
-            <Link to="/" styleName="link">
+          {location && location.pathname !== '/' && (
+            <Link to="/" styleName="link" data-test="link">
               Reactive Snake
             </Link>
           )}
-          {location.pathname === '/' && 'Reactive Snake'}
+          {location && location.pathname === '/' && 'Reactive Snake'}
         </h1>
         <Navigation />
       </div>
