@@ -16,7 +16,7 @@ const defaultProps = {
 /**
  * Setup function to create ShallowWrapper for Header component
  * @param {object} props
- * @returns {*}
+ * @returns {ShallowWrapper}
  */
 const setup = props => {
   return shallow(<Header {...props} />);
