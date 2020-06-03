@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { Form } from './containers/Form';
 import './styles.scss';
-import directions from 'constants/directions';
+import directions from '../../constants/directions';
 import Food from '../Food';
 import Snake from '../Snake';
 import gameActions from 'actions/game';
 import snakeActions from 'actions/snake';
 import Counter from '../Counter';
-import { CELL_SIZE, MOBILE_CELL_SIZE } from 'constants/cells';
+import { CELL_SIZE, MOBILE_CELL_SIZE } from '../../constants/cells';
 import MobileButtons from './components/MobileButtons';
 import PauseButton from './components/PauseButton';
 
@@ -144,7 +144,7 @@ const Board = () => {
 
     return (
       <>
-        <div styleName="container">
+        <div styleName="container" data-test="component-board">
           {deviceType !== 'mobile' && (
             <div styleName="board-info-text">
               Use arrow keys to change direction. Press space to pause.

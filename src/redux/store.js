@@ -7,7 +7,8 @@ import initialState from './initialState';
 
 const sagaMiddleware = createSagaMiddleware();
 
-let middlewares = [sagaMiddleware];
+export let middlewares = [sagaMiddleware];
+
 if (process.env.NODE_ENV !== 'production') {
   const logger = createLogger({});
   middlewares = [...middlewares, logger];

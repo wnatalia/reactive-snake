@@ -1,5 +1,5 @@
 import { delay, put, select, takeLatest } from 'redux-saga/effects';
-import directions from 'constants/directions';
+import directions from '../../constants/directions';
 import snakeTypes from 'types/snake';
 import gameTypes from 'types/game';
 import foodActions from 'actions/food';
