@@ -8,6 +8,7 @@ const Food = ({ cellSize }) => {
   if (foodPosition) {
     return (
       <div
+        data-test="component-food"
         styleName="food"
         style={{
           width: cellSize,
