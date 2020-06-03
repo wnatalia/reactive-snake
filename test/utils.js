@@ -1,7 +1,3 @@
-import { createStore, applyMiddleware, compose } from 'redux';
-import { middlewares } from '../src/redux/store';
-import reducer from '../src/redux/reducer';
-
 /**
  * Finds and returns nodes by their data-test attribute.
  * @param {ShallowWrapper} wrapper
