@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
+import { shallow } from 'enzyme';
 import { useSelector } from 'react-redux';
 import Game from './index';
 import initialState from '../../redux/initialState';
