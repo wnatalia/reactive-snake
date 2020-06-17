@@ -7,10 +7,10 @@ import counterActions from 'actions/counter';
 const getBoardDimensions = state => state.board.dimensions;
 const getSnake = state => state.snake;
 
-function* handleEating() {
+export function* handleEating() {
   const boardDimensions = yield select(getBoardDimensions);
   const snake = yield select(getSnake);
-  let newFoodPosition = generateFoodPosition(boardDimensions, snake);
+  const newFoodPosition = generateFoodPosition(boardDimensions, snake);
 
   yield put(foodActions.setPosition(newFoodPosition));
 
