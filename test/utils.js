@@ -15,9 +15,10 @@ export const findByTestAttribute = (wrapper, value) => {
  * Returns actions dispatched by the provided saga.
  * @param {Generator} saga
  * @param {Object} initialAction
+ * @param {Object} state
  * @returns {Promise<[]>}
  */
-export const watchSaga = async (saga, initialAction, state) => {
+export const watchSaga = async (saga, initialAction, state = {}) => {
   const dispatched = [];
   await runSaga(
     {
