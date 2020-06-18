@@ -23,10 +23,10 @@ describe('when dimensions were set', () => {
       boardActions.saveDimensions(defaultDimensions)
     );
   });
-  test('should set food position', async () => {
+  test('should set food position', () => {
     expect(dispatched).toContainEqual(foodActions.setPosition(defaultPosition));
   });
-  test('should set snake position', async () => {
+  test('should set snake position', () => {
     const snakeAction = dispatched.filter(
       el => el.type === snakeTypes.SET_POSITION
     );
