@@ -4,7 +4,7 @@ import { generateFoodPosition } from 'helpers/food';
 import snakeActions from 'actions/snake';
 import foodActions from 'actions/food';
 
-function* handleSaveDimensions(action) {
+export function* handleSaveDimensions(action) {
   const { dimensions } = action;
   if (dimensions) {
     const snakePosition = {

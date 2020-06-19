@@ -1,5 +1,5 @@
 import types from 'types/snake';
-import directions from 'constants/directions';
+import directions from '../../constants/directions';
 
 export default (state = {}, action) => {
   switch (action.type) {

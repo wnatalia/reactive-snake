@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import actions from 'actions/game';
 import './styles.scss';
@@ -9,7 +9,7 @@ const Game = () => {
   const dimensions = useSelector(state => state.board.dimensions);
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  React.useEffect(() => {
     return () => {
       if (dimensions) {
         dispatch(actions.pause());
@@ -22,16 +22,22 @@ const Game = () => {
   };
 
   return (
-    <div styleName="game">
+    <div styleName="game" data-test="component-game">
       {isInitialized && <Board />}
       {!isInitialized && (
         <>
-          <h2 styleName="welcome-title">
+          <h2 styleName="welcome-title" data-test="welcome-title">
             Welcome to
             <span styleName="welcome-title-emphasis"> Reactive Snake</span>.
           </h2>
-          <p styleName="welcome-text">Press start to continue...</p>
-          <button className="button primary" onClick={handleClick}>
+          <p styleName="welcome-text" data-test="welcome-text">
+            Press start to continue...
+          </p>
+          <button
+            className="button primary"
+            data-test="start-button"
+            onClick={handleClick}
+          >
             Start
           </button>
         </>

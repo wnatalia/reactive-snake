@@ -11,7 +11,9 @@ const technologies = [
   'CSS Modules',
   'React Transition Group',
   'Sass (SCSS)',
-  'Eslint'
+  'Eslint',
+  'Jest',
+  'Enzyme'
 ];
 
 export const About = () => (

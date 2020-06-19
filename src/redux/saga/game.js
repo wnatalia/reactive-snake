@@ -6,7 +6,7 @@ import counterActions from 'actions/counter';
 
 import gameTypes from 'types/game';
 
-function* handleRestart() {
+export function* handleRestart() {
   yield put(boardActions.saveDimensions(null));
   yield put(snakeActions.reset());
   yield put(foodActions.setPosition(null));

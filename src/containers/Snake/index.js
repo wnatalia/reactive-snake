@@ -10,6 +10,7 @@ const Snake = ({ cellSize }) => {
     return (
       <>
         <div
+          data-test="component-snake"
           styleName="snake"
           style={{
             width: cellSize,
@@ -21,6 +22,7 @@ const Snake = ({ cellSize }) => {
         {body.map((part, index) => (
           <div
             key={`x${part.x}y${part.y}i${index}`}
+            data-test="component-snake"
             styleName="snake"
             style={{
               width: cellSize,

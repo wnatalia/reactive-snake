@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import directions from 'constants/directions';
+import directions from '../../../../constants/directions';
 import './styles.scss';
 
 const ArrowIcon = () => (

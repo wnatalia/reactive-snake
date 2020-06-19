@@ -1,5 +1,5 @@
 import { delay, put, select, takeLatest } from 'redux-saga/effects';
-import directions from 'constants/directions';
+import directions from '../../constants/directions';
 import snakeTypes from 'types/snake';
 import gameTypes from 'types/game';
 import foodActions from 'actions/food';
@@ -13,7 +13,7 @@ const getPosition = state => state.snake.position;
 const getFoodPosition = state => state.food.position;
 const getBoardDimensions = state => state.board.dimensions;
 
-const getNewPosition = (direction, position) => {
+export const getNewPosition = (direction, position) => {
   let newX;
   let newY;
 
@@ -55,7 +55,7 @@ const createNewBody = (body, position) => {
   return newBody;
 };
 
-function* handlePositionChange(action) {
+export function* handlePositionChange(action) {
   const position = yield select(getPosition);
   const direction = yield select(getDirection);
   const body = yield select(getBody);
