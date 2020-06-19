@@ -23,3 +23,16 @@ npm run dev
 ```bash
 npm start
 ```
+
+## Run tests
+```
+npm run test
+```
+Run tests in watch mode:
+```
+npm run test:watch
+```
+Run tests with coverage:
+```
+npm run test:coverage
+```
