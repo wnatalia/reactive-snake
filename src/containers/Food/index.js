@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import './styles.scss';
 
@@ -21,6 +22,10 @@ const Food = ({ cellSize }) => {
   } else {
     return false;
   }
+};
+
+Food.propTypes = {
+  cellSize: PropTypes.number
 };
 
 export default Food;

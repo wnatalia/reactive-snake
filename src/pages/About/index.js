@@ -1,19 +1,18 @@
 import React from 'react';
-import shortid from 'shortid';
 import './styles.scss';
 
 const technologies = [
-  'React 16.12 (and React DOM)',
-  'React Redux',
-  'React Saga',
-  'React Router',
-  'Webpack',
-  'CSS Modules',
-  'React Transition Group',
-  'Sass (SCSS)',
-  'Eslint',
-  'Jest',
-  'Enzyme'
+  { key: 0, value: 'React 16.12 (and React DOM)' },
+  { key: 1, value: 'React Redux' },
+  { key: 2, value: 'React Saga' },
+  { key: 3, value: 'React Router' },
+  { key: 4, value: 'Webpack' },
+  { key: 5, value: 'CSS Modules' },
+  { key: 6, value: 'React Transition Group' },
+  { key: 7, value: 'Sass (SCSS)' },
+  { key: 8, value: 'Eslint' },
+  { key: 9, value: 'Jest' },
+  { key: 10, value: 'Enzyme' }
 ];
 
 export const About = () => (
@@ -26,8 +25,8 @@ export const About = () => (
       <h3 styleName="title">Major technologies used in this project:</h3>
       <ul styleName="list">
         {technologies.map(item => (
-          <li key={shortid.generate()} styleName="item">
-            {item}
+          <li key={item.key} styleName="item">
+            {item.value}
           </li>
         ))}
       </ul>

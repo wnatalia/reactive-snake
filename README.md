@@ -1,10 +1,10 @@
 # Reactive Snake
 
-This is a classic snake game developed on React.js for educational purposes. Still a work in progress.
-
-[Demo](https://reactive-snake.netlify.com/)
+This is a classic snake game developed ~2 years ago on React.js for educational purposes
 
 ## Installation
+
+Please use node 12.
 
 Install dependencies:
 
