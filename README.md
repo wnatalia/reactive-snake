@@ -1,6 +1,6 @@
 # Reactive Snake
 
-This is a classic snake game developed ~2 years ago on React.js for educational purposes
+This is a classic snake game developed years ago for educational purposes
 
 ## Installation
 
